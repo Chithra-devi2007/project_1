@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Thalamai Gamers Login</title>
-
 <style>
 *{
 margin:0;
@@ -12,7 +11,6 @@ padding:0;
 box-sizing:border-box;
 font-family:Arial,sans-serif;
 }
-
 body{
 height:100vh;
 display:flex;
@@ -23,13 +21,11 @@ background-size:400% 400%;
 animation:bg 8s ease infinite;
 overflow:hidden;
 }
-
 @keyframes bg{
 0%{background-position:0% 50%;}
 50%{background-position:100% 50%;}
 100%{background-position:0% 50%;}
 }
-
 .login-box{
 width:350px;
 padding:35px;
@@ -40,18 +36,15 @@ box-shadow:0 0 30px cyan;
 text-align:center;
 color:white;
 }
-
 .login-box h1{
 color:#00ffff;
 margin-bottom:10px;
 text-shadow:0 0 15px cyan;
 }
-
 .login-box h3{
 margin-bottom:25px;
 color:white;
 }
-
 input{
 width:100%;
 padding:14px;
@@ -63,11 +56,9 @@ background:rgba(255,255,255,.15);
 color:white;
 font-size:16px;
 }
-
 input::placeholder{
 color:#ddd;
 }
-
 button{
 width:100%;
 padding:14px;
@@ -81,86 +72,79 @@ cursor:pointer;
 transition:.3s;
 margin-top:10px;
 }
-
 button:hover{
 transform:scale(1.05);
 box-shadow:0 0 20px cyan;
 }
-
 .footer{
 margin-top:20px;
 font-size:13px;
 color:#ccc;
 }
+
+/* YouTube subscribe button style - this was missing before */
+.buy{
+display:block;
+margin-top:16px;
+padding:12px;
+border-radius:10px;
+background:rgba(255,0,0,0.15);
+border:1px solid rgba(255,0,0,0.5);
+color:#ff6b6b;
+text-decoration:none;
+font-size:14px;
+font-weight:bold;
+transition:.3s;
+}
+.buy:hover{
+background:rgba(255,0,0,0.3);
+box-shadow:0 0 15px rgba(255,0,0,0.5);
+}
 </style>
-
 </head>
-
 <body>
-
 <div class="login-box">
-
 <h1>🎮 THALAMAI GAMERS</h1>
-
 <h3>Login</h3>
-
 <input
 type="text"
 id="user"
 placeholder="Username"
 autocomplete="off">
-
 <input
 type="password"
 id="pass"
 placeholder="Password">
-
 <button onclick="login()">LOGIN</button>
 
-<div class="footer">
-Premium Free Fire ID Store
-</div>
-
-</div>
-
-<script>
-
-function login(){
-
-let username=document.getElementById("user").value.trim();
-let password=document.getElementById("pass").value;
-
-if(username==="thalamai" && password==="12345"){
-
-alert("✅ Login Successful");
-
-window.location.href="home.html";
-
-}
-else{
-
-alert("❌ Wrong Username or Password");
-
-}
-
-}
-
-document.addEventListener("keypress",function(e){
-
-if(e.key==="Enter"){
-
-login();
-
-}
-
-});
- <a href="https://www.youtube.com/@thalamaigaming4159"
+<a href="https://www.youtube.com/@thalamaigaming4159"
 target="_blank"
 class="buy">
 📺 Subscribe YouTube
 </a>
 
-</script>
+<div class="footer">
+Premium Free Fire ID Store
+</div>
+</div>
 
+<script>
+function login(){
+let username=document.getElementById("user").value.trim();
+let password=document.getElementById("pass").value;
+if(username==="thalamai" && password==="12345"){
+alert("✅ Login Successful");
+window.location.href="home.html";
+}
+else{
+alert("❌ Wrong Username or Password");
+}
+}
+document.addEventListener("keypress",function(e){
+if(e.key==="Enter"){
+login();
+}
+});
+</script>
 </body>
 </html>

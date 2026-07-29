@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Thalamai Gamers Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+    body{
+      height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);
+      overflow:hidden;
+    }
+    .login-box{
+      width:320px;
+      padding:40px 30px;
+      background:rgba(255,255,255,0.08);
+      border:1px solid rgba(255,255,255,0.2);
+      border-radius:20px;
+      backdrop-filter:blur(15px);
+      box-shadow:0 8px 32px rgba(0,0,0,0.4);
+      text-align:center;
+      color:white;
+    }
+    .login-box h1{
+      margin-bottom:25px;
+      color:#00ffe5;
+      text-shadow:0 0 15px #00ffe5;
+    }
+    input{
+      width:100%;
+      padding:12px;
+      margin:10px 0;
+      border:none;
+      border-radius:10px;
+      outline:none;
+      background:rgba(255,255,255,0.15);
+      color:white;
+      font-size:16px;
+    }
+    input::placeholder{color:#ddd}
+    button{
+      width:100%;
+      padding:12px;
+      margin-top:15px;
+      border:none;
+      border-radius:10px;
+      background:#00ffe5;
+      color:#111;
+      font-weight:bold;
+      cursor:pointer;
+      transition:.3s;
+    }
+    button:hover{
+      transform:scale(1.05);
+      box-shadow:0 0 20px #00ffe5;
+    }
+  </style>
+</head>
+<body>
+
+<div class="login-box">
+  <h1>🎮 Thalamai Gamers</h1>
+  <input type="text" id="user" placeholder="Username">
+  <input type="password" id="pass" placeholder="Password">
+  <button onclick="login()">Login</button>
+</div>
+
+<script>
+function login(){
+  const u=document.getElementById('user').value;
+  const p=document.getElementById('pass').value;
+
+  if(u==='thalamai' && p==='12345'){
+    window.location.href='home.html';
+  }else{
+    alert('Wrong Username or Password');
+  }
+}
+</script>
+
+</body>
+</html>

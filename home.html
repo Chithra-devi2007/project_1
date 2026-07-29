@@ -3,9 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ESAKIMUTHU GAMERS</title>
+
+<title>Esakimuthu Gaming | Free Fire ID Store</title>
 
 <style>
+
 *{
 margin:0;
 padding:0;
@@ -14,66 +16,74 @@ font-family:Arial,sans-serif;
 }
 
 body{
-background:#0a0f1f;
+background:#070b18;
 color:white;
 }
 
 header{
-background:#111827;
+background:#081221;
 padding:20px;
 text-align:center;
 box-shadow:0 0 20px cyan;
+position:sticky;
+top:0;
+z-index:100;
 }
 
 header h1{
 color:#00ffff;
-font-size:40px;
+text-shadow:0 0 20px cyan;
 }
 
-header p{
-margin-top:10px;
-color:#ddd;
-}
-
-.banner{
+.slider{
 width:100%;
-height:350px;
-background:url("https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1400&auto=format&fit=crop") center/cover;
+height:320px;
+overflow:hidden;
+}
+
+.slider img{
+width:100%;
+height:320px;
+object-fit:cover;
+display:none;
+}
+
+.slider img.active{
+display:block;
+}
+
+.controls{
+padding:30px;
 display:flex;
+gap:20px;
 justify-content:center;
-align-items:center;
+flex-wrap:wrap;
 }
 
-.banner h2{
-font-size:45px;
-background:rgba(0,0,0,.6);
-padding:20px;
-border-radius:15px;
-color:#00ffff;
-}
-
-.container{
-width:90%;
-margin:auto;
-padding:40px 0;
+input,select{
+padding:12px;
+border:none;
+border-radius:10px;
+font-size:16px;
 }
 
 .cards{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
 gap:25px;
+padding:30px;
 }
 
 .card{
-background:#151d33;
-border-radius:15px;
+background:#101b2d;
+border-radius:20px;
 overflow:hidden;
 box-shadow:0 0 15px cyan;
 transition:.3s;
 }
 
 .card:hover{
-transform:scale(1.05);
+transform:translateY(-8px);
 }
 
 .card img{
@@ -82,94 +92,196 @@ height:220px;
 object-fit:cover;
 }
 
-.card h3{
-padding:15px;
+.card h2{
+padding:10px;
 color:#00ffff;
 }
 
-.card p{
-padding:0 15px 10px;
-}
-
 .price{
-padding:10px 15px;
-font-size:28px;
+padding-left:10px;
+font-size:24px;
 color:gold;
 font-weight:bold;
 }
 
 .buy{
 display:block;
-margin:15px;
+margin:20px;
+text-align:center;
 padding:12px;
 background:#00ffff;
 color:black;
-text-align:center;
 text-decoration:none;
 font-weight:bold;
 border-radius:10px;
 }
 
 .buy:hover{
-background:white;
+box-shadow:0 0 20px cyan;
+}
+
+.gallery{
+padding:40px;
+text-align:center;
+}
+
+.gallery h2{
+margin-bottom:20px;
+color:#00ffff;
+}
+
+.gallery img{
+width:230px;
+height:180px;
+object-fit:cover;
+margin:10px;
+border-radius:15px;
+box-shadow:0 0 15px cyan;
 }
 
 footer{
-background:#111827;
-padding:20px;
+background:#081221;
+padding:30px;
 text-align:center;
 margin-top:40px;
 }
-</style>
 
+footer a{
+color:#00ffff;
+text-decoration:none;
+margin:10px;
+}
+
+</style>
 </head>
 
 <body>
 
 <header>
-<h1>🎮 ESAKIMUTHU GAMERS</h1>
-<p>Free Fire Premium ID Store</p>
+<h1>🎮 ESAKIMUTHU GAMING</h1>
+<p>Premium Free Fire ID Store</p>
 </header>
 
-<div class="banner">
-<h2>🔥 BUY PREMIUM FREE FIRE IDS 🔥</h2>
+<div class="slider">
+
+<img class="active" src="https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1200&auto=format&fit=crop">
+
+<img src="https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?q=80&w=1200&auto=format&fit=crop">
+
+<img src="https://images.unsplash.com/photo-1486572788966-cfd3df1f5b42?q=80&w=1200&auto=format&fit=crop">
+
 </div>
 
-<div class="container">
+<div class="controls">
+
+<input
+type="text"
+id="search"
+placeholder="Search ID">
+
+<select id="price">
+
+<option>All Prices</option>
+
+<option>499</option>
+
+<option>799</option>
+
+<option>1299</option>
+
+</select>
+
+</div>
 
 <div class="cards">
 
 <div class="card">
+
 <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=800">
-<h3>Legendary ID</h3>
-<p>Level 75 | Grandmaster | Evo Gun</p>
+
+<h2>Legendary ID</h2>
+
 <div class="price">₹499</div>
-<a class="buy" href="https://wa.me/91YOURNUMBER">Buy Now</a>
+
+<a class="buy" href="https://wa.me/919999999999">WhatsApp Order</a>
+
 </div>
 
 <div class="card">
+
 <img src="https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?q=80&w=800">
-<h3>Elite ID</h3>
-<p>Level 80 | Rare Bundle | 500+ Skins</p>
-<div class="price">₹999</div>
-<a class="buy" href="https://wa.me/91YOURNUMBER">Buy Now</a>
+
+<h2>Elite ID</h2>
+
+<div class="price">₹799</div>
+
+<a class="buy" href="https://wa.me/919999999999">WhatsApp Order</a>
+
 </div>
 
 <div class="card">
+
 <img src="https://images.unsplash.com/photo-1486572788966-cfd3df1f5b42?q=80&w=800">
-<h3>Grandmaster ID</h3>
-<p>Heroic | Evo Guns | Premium Account</p>
-<div class="price">₹1999</div>
-<a class="buy" href="https://wa.me/91YOURNUMBER">Buy Now</a>
+
+<h2>Grandmaster ID</h2>
+
+<div class="price">₹1299</div>
+
+<a class="buy" href="https://wa.me/919999999999">WhatsApp Order</a>
+
 </div>
 
 </div>
+
+<div class="gallery">
+
+<h2>Image Gallery</h2>
+
+<img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=800">
+
+<img src="https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?q=80&w=800">
+
+<img src="https://images.unsplash.com/photo-1486572788966-cfd3df1f5b42?q=80&w=800">
 
 </div>
 
 <footer>
-© 2026 ESAKIMUTHU GAMERS | Free Fire ID Store
+
+<h3>Follow Us</h3>
+
+<a href="#">Instagram</a> |
+
+<a href="#">YouTube</a> |
+
+<a href="#">WhatsApp</a>
+
+<p><br>© 2026 Esakimuthu Gaming</p>
+
 </footer>
+
+<script>
+
+let slides=document.querySelectorAll(".slider img");
+
+let i=0;
+
+setInterval(function(){
+
+slides[i].classList.remove("active");
+
+i++;
+
+if(i>=slides.length){
+
+i=0;
+
+}
+
+slides[i].classList.add("active");
+
+},3000);
+
+</script>
 
 </body>
 </html>

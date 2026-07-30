@@ -56,6 +56,13 @@ const listings = [
   { name: "Gold Tier ID",       level: 29, price: 699,  badge: "Budget", tags: ["Beginner Friendly"], c1:"#7B2FFF", c2:"#00E5FF" },
   { name: "Master Class ID",    level: 54, price: 1899, badge: "Trending", tags: ["Rare Bundle","Verified"], c1:"#FF3D6E", c2:"#7B2FFF" },
   { name: "Immortal Squad ID",  level: 80, price: 5499, badge: "VIP", tags: ["Top 100 Rank","All Characters"], c1:"#FFC94A", c2:"#00E5FF" },
+  { name: "Shadow Reaper ID",   level: 49, price: 1799, badge: "Rare", tags: ["Dark Bundle","Exclusive Skin"], c1:"#7B2FFF", c2:"#FF8A3D" },
+  { name: "Phoenix Blaze ID",   level: 62, price: 2799, badge: "Popular", tags: ["Fire Skin Set","Custom Room Card"], c1:"#FF3D6E", c2:"#00E5FF" },
+  { name: "Cyber Ninja ID",     level: 55, price: 2299, badge: "New", tags: ["Neon Outfit","Emote Pack"], c1:"#00E5FF", c2:"#7B2FFF" },
+  { name: "Titan Warlord ID",   level: 73, price: 3599, badge: "Hot", tags: ["Legendary Backpack","Pet Bundle"], c1:"#FFC94A", c2:"#FF3D6E" },
+  { name: "Frost Empress ID",   level: 47, price: 1599, badge: "Deal", tags: ["Winter Skin","Free Emote"], c1:"#00E5FF", c2:"#FFC94A" },
+  { name: "Royal Samurai ID",   level: 68, price: 3199, badge: "Premium", tags: ["Katana Skin","Rare Bundle"], c1:"#7B2FFF", c2:"#00E5FF" },
+  { name: "Venom Striker ID",   level: 39, price: 1299, badge: "Best Value", tags: ["Starter Bundle","Fast Handover"], c1:"#FF3D6E", c2:"#7B2FFF" },
 ];
 
 const grid = document.getElementById("grid");

@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Thalamai Gamers Login</title>
+
 <style>
 *{
 margin:0;
@@ -11,155 +12,134 @@ padding:0;
 box-sizing:border-box;
 font-family:Arial,sans-serif;
 }
+
 body{
 height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-background:linear-gradient(-45deg,#000000,#0f2027,#203a43,#2c5364);
+background:linear-gradient(-45deg,#000,#0f2027,#203a43,#2c5364);
 background-size:400% 400%;
 animation:bg 8s ease infinite;
-overflow:hidden;
 }
+
 @keyframes bg{
 0%{background-position:0% 50%;}
 50%{background-position:100% 50%;}
 100%{background-position:0% 50%;}
 }
+
 .login-box{
-width:350px;
+width:360px;
 padding:35px;
 border-radius:20px;
-background:rgba(255,255,255,0.08);
+background:rgba(255,255,255,.08);
 backdrop-filter:blur(15px);
 box-shadow:0 0 30px cyan;
 text-align:center;
 color:white;
 }
+
 .login-box h1{
 color:#00ffff;
 margin-bottom:10px;
-text-shadow:0 0 15px cyan;
 }
+
 .login-box h3{
-margin-bottom:25px;
-color:white;
+margin-bottom:20px;
 }
+
 input{
 width:100%;
 padding:14px;
 margin:10px 0;
 border:none;
-outline:none;
 border-radius:10px;
 background:rgba(255,255,255,.15);
 color:white;
-font-size:16px;
 }
-input::placeholder{
-color:#ddd;
-}
+
 button{
 width:100%;
 padding:14px;
+margin-top:10px;
 border:none;
 border-radius:10px;
-background:#00ffff;
-color:black;
+background:cyan;
 font-size:17px;
 font-weight:bold;
 cursor:pointer;
-transition:.3s;
-margin-top:10px;
 }
+
 button:hover{
-transform:scale(1.05);
 box-shadow:0 0 20px cyan;
 }
+
 .footer{
 margin-top:20px;
-font-size:13px;
 color:#ccc;
 }
-
-/* YouTube subscribe button style - this was missing before */
-.buy{
-display:block;
-margin-top:16px;
-padding:12px;
-border-radius:10px;
-background:rgba(255,0,0,0.15);
-border:1px solid rgba(255,0,0,0.5);
-color:#ff6b6b;
-text-decoration:none;
-font-size:14px;
-font-weight:bold;
-transition:.3s;
-}
-.buy:hover{
-background:rgba(255,0,0,0.3);
-box-shadow:0 0 15px rgba(255,0,0,0.5);
-}
-
-/* Instagram follow button style */
-.insta{
-display:block;
-margin-top:10px;
-padding:12px;
-border-radius:10px;
-background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);
-color:white;
-text-decoration:none;
-font-size:14px;
-font-weight:bold;
-transition:.3s;
-}
-.insta:hover{
-transform:scale(1.03);
-box-shadow:0 0 15px rgba(220,39,67,0.6);
-}
 </style>
+
 </head>
+
 <body>
+
 <div class="login-box">
+
 <h1>🎮 THALAMAI GAMERS</h1>
+
 <h3>Login</h3>
-<input
-type="text"
-id="user"
-placeholder="Username"
-autocomplete="off">
-<input
-type="password"
-id="pass"
-placeholder="Password">
+
+<input type="text" id="user" placeholder="Username">
+
+<input type="password" id="pass" placeholder="Password">
+
 <button onclick="login()">LOGIN</button>
 
 <div class="footer">
-Premium Free Fire ID Store
+Username : thalamai<br>
+Password : 12345
 </div>
+
 </div>
 
 <script>
+
 function login(){
+
 let username=document.getElementById("user").value.trim();
+
 let password=document.getElementById("pass").value;
-// Console check
-console.log("Username:", username);
-console.log("Password:", password);
+
 if(username==="thalamai" && password==="12345"){
+
 alert("✅ Login Successful");
-window.location.href="home.html";
+
+// Home page open
+window.location.href="index.html";
+
 }
+
 else{
+
 alert("❌ Wrong Username or Password");
+
 }
+
 }
+
 document.addEventListener("keypress",function(e){
+
 if(e.key==="Enter"){
+
 login();
+
 }
+
 });
+
 </script>
+
 </body>
 </html>

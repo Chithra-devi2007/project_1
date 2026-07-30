@@ -91,6 +91,26 @@ button{font-family:inherit;cursor:pointer;}
 }
 .brand span{color:var(--cyan);}
 .nav-right{display:flex;align-items:center;gap:18px;}
+
+.nav-avatar{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:5px 14px 5px 5px;
+  border-radius:999px;
+  border:1px solid var(--border);
+  background:rgba(123,47,255,0.08);
+}
+.nav-avatar svg{
+  filter:drop-shadow(0 4px 8px rgba(123,47,255,0.5));
+}
+.nav-avatar span{
+  font-family:'Rajdhani',sans-serif;
+  font-weight:700;
+  font-size:14px;
+  letter-spacing:0.02em;
+  color:var(--ink);
+}
 .pill-btn{
   padding:9px 20px;
   border-radius:999px;
@@ -448,6 +468,9 @@ footer{
 }
 
 @media (max-width:720px){
+  .nav{flex-wrap:wrap; gap:12px; padding:16px 5%;}
+  .nav-right{flex-wrap:wrap; gap:8px; width:100%; justify-content:flex-start;}
+  .nav-right .pill-btn{padding:7px 14px; font-size:12.5px;}
   .hero{padding-top:40px;}
   .hero-text h1{font-size:34px;}
   .tilt-stage{margin:0 auto;}

@@ -1,0 +1,239 @@
+<!-- ============================================
+     THALAMAI GAMERS - AI CHAT WIDGET
+     Copy this block before </body> in your existing site
+     ============================================ -->
+
+<style>
+  :root{
+    --tg-bg: #0b0f14;
+    --tg-panel: #10161d;
+    --tg-neon: #39ff9d;
+    --tg-neon-dim: #1f8f5c;
+    --tg-purple: #a855f7;
+    --tg-text: #e8f4ee;
+    --tg-muted: #7d94a3;
+  }
+
+  #tg-chat-toggle{
+    position: fixed;
+    bottom: 22px;
+    right: 22px;
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    background: var(--tg-panel);
+    border: 2px solid var(--tg-neon);
+    box-shadow: 0 0 14px rgba(57,255,157,0.55), inset 0 0 8px rgba(57,255,157,0.15);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Segoe UI', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    color: var(--tg-neon);
+    z-index: 9999;
+    transition: transform 0.2s ease;
+  }
+  #tg-chat-toggle:hover{ transform: scale(1.07); }
+
+  #tg-chat-window{
+    position: fixed;
+    bottom: 92px;
+    right: 22px;
+    width: 320px;
+    max-width: 90vw;
+    height: 440px;
+    max-height: 70vh;
+    background: var(--tg-bg);
+    border: 1px solid var(--tg-neon-dim);
+    border-radius: 12px;
+    box-shadow: 0 0 30px rgba(0,0,0,0.6), 0 0 18px rgba(57,255,157,0.25);
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 9999;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  #tg-chat-window.open{ display: flex; }
+
+  #tg-chat-header{
+    background: linear-gradient(90deg, #10161d, #14202a);
+    border-bottom: 1px solid var(--tg-neon-dim);
+    padding: 12px 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  #tg-chat-header .tg-title{
+    color: var(--tg-neon);
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+  }
+  #tg-chat-header .tg-sub{
+    color: var(--tg-muted);
+    font-size: 11px;
+    margin-top: 2px;
+  }
+  #tg-chat-close{
+    background: none;
+    border: none;
+    color: var(--tg-muted);
+    font-size: 18px;
+    cursor: pointer;
+    line-height: 1;
+  }
+  #tg-chat-close:hover{ color: var(--tg-neon); }
+
+  #tg-chat-messages{
+    flex: 1;
+    overflow-y: auto;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .tg-msg{
+    max-width: 82%;
+    padding: 9px 12px;
+    border-radius: 10px;
+    font-size: 13px;
+    line-height: 1.4;
+  }
+  .tg-msg.bot{
+    align-self: flex-start;
+    background: var(--tg-panel);
+    border: 1px solid var(--tg-neon-dim);
+    color: var(--tg-text);
+  }
+  .tg-msg.user{
+    align-self: flex-end;
+    background: var(--tg-purple);
+    color: #fff;
+  }
+  .tg-msg.typing{
+    align-self: flex-start;
+    color: var(--tg-muted);
+    font-style: italic;
+    font-size: 12px;
+  }
+
+  #tg-chat-inputbar{
+    display: flex;
+    border-top: 1px solid var(--tg-neon-dim);
+    padding: 10px;
+    gap: 8px;
+    background: var(--tg-panel);
+  }
+  #tg-chat-input{
+    flex: 1;
+    background: #0b0f14;
+    border: 1px solid var(--tg-neon-dim);
+    border-radius: 8px;
+    padding: 8px 10px;
+    color: var(--tg-text);
+    font-size: 13px;
+    outline: none;
+  }
+  #tg-chat-input:focus{ border-color: var(--tg-neon); }
+  #tg-chat-send{
+    background: var(--tg-neon);
+    color: #06110a;
+    border: none;
+    border-radius: 8px;
+    padding: 0 14px;
+    font-weight: 700;
+    font-size: 13px;
+    cursor: pointer;
+  }
+  #tg-chat-send:hover{ background: #5dffb3; }
+  #tg-chat-send:disabled{ opacity: 0.5; cursor: not-allowed; }
+</style>
+
+<button id="tg-chat-toggle" aria-label="Open chat">ESK</button>
+
+<div id="tg-chat-window">
+  <div id="tg-chat-header">
+    <div>
+      <div class="tg-title">Esakimuthu</div>
+      <div class="tg-sub">Thalamai Gamers support</div>
+    </div>
+    <button id="tg-chat-close" aria-label="Close chat">Close</button>
+  </div>
+  <div id="tg-chat-messages"></div>
+  <div id="tg-chat-inputbar">
+    <input id="tg-chat-input" type="text" placeholder="Ask about IDs, price, delivery..." />
+    <button id="tg-chat-send">Send</button>
+  </div>
+</div>
+
+<script>
+(function(){
+  // ---- CONFIG ----
+  // Point this to your own backend proxy (see chatbot-proxy.php).
+  // Never call the AI API directly from the browser with a real API key.
+  const TG_CHAT_ENDPOINT = "chatbot-proxy.php";
+
+  const toggle = document.getElementById('tg-chat-toggle');
+  const win = document.getElementById('tg-chat-window');
+  const closeBtn = document.getElementById('tg-chat-close');
+  const messages = document.getElementById('tg-chat-messages');
+  const input = document.getElementById('tg-chat-input');
+  const sendBtn = document.getElementById('tg-chat-send');
+
+  let history = [];
+
+  function addMessage(text, who){
+    const el = document.createElement('div');
+    el.className = 'tg-msg ' + who;
+    el.textContent = text;
+    messages.appendChild(el);
+    messages.scrollTop = messages.scrollHeight;
+    return el;
+  }
+
+  toggle.addEventListener('click', () => {
+    win.classList.toggle('open');
+    if(win.classList.contains('open') && messages.children.length === 0){
+      addMessage("Vanakkam! Naan Esakimuthu, Thalamai Gamers support bot. Free Fire ID price, delivery, payment pathi kekkalam.", 'bot');
+    }
+  });
+  closeBtn.addEventListener('click', () => win.classList.remove('open'));
+
+  async function sendMessage(){
+    const text = input.value.trim();
+    if(!text) return;
+    addMessage(text, 'user');
+    history.push({ role: 'user', content: text });
+    input.value = '';
+    sendBtn.disabled = true;
+
+    const typingEl = addMessage('Typing...', 'typing');
+
+    try{
+      const res = await fetch(TG_CHAT_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ messages: history })
+      });
+      const data = await res.json();
+      typingEl.remove();
+
+      const reply = data.reply || "Sorry, konjam neram kalichu try pannunga.";
+      addMessage(reply, 'bot');
+      history.push({ role: 'assistant', content: reply });
+    }catch(err){
+      typingEl.remove();
+      addMessage("Connection error. Konjam neram kalichu try pannunga.", 'bot');
+    }finally{
+      sendBtn.disabled = false;
+    }
+  }
+
+  sendBtn.addEventListener('click', sendMessage);
+  input.addEventListener('keydown', (e) => {
+    if(e.key === 'Enter') sendMessage();
+  });
+})();
+</script>

@@ -1,0 +1,57 @@
+<?php
+// ============================================
+// THALAMAI GAMERS - CHATBOT BACKEND PROXY
+// Keeps your AI API key hidden from the browser.
+// Upload this to your PHP hosting (this won't work
+// on GitHub Pages since that's static-only hosting -
+// you'll need PHP hosting like InfinityFree, 000webhost,
+// or your own XAMPP-based server for this file).
+// ============================================
+
+header('Content-Type: application/json');
+header('Access-Control-Allow-Origin: *'); // restrict to your domain in production
+
+// Put your API key in an environment variable, not directly in code.
+$apiKey = getenv('ANTHROPIC_API_KEY');
+
+$input = json_decode(file_get_contents('php://input'), true);
+$history = $input['messages'] ?? [];
+
+// System prompt: teach the bot about your business
+$systemPrompt = "You are Esakimuthu, the friendly support assistant for Thalamai Gamers, "
+    . "a Free Fire gaming ID marketplace. Answer customer questions about ID prices, "
+    . "payment methods, delivery time, and account safety. Keep answers short (2-3 sentences), "
+    . "friendly, and use simple Tanglish (Tamil-English mix) when helpful. "
+    . "If you don't know something specific about an order, tell the customer to contact "
+    . "via WhatsApp for details.";
+
+$payload = [
+    "model" => "claude-sonnet-4-6",
+    "max_tokens" => 300,
+    "system" => $systemPrompt,
+    "messages" => $history
+];
+
+$ch = curl_init("https://api.anthropic.com/v1/messages");
+curl_setopt($ch, CURLOPT_POST, true);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_HTTPHEADER, [
+    "Content-Type: application/json",
+    "x-api-key: " . $apiKey,
+    "anthropic-version: 2023-06-01"
+]);
+curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($payload));
+
+$response = curl_exec($ch);
+$httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+curl_close($ch);
+
+if($httpCode !== 200){
+    echo json_encode(["reply" => "Sorry, chat service ippo available illa. WhatsApp la contact pannunga."]);
+    exit;
+}
+
+$data = json_decode($response, true);
+$reply = $data['content'][0]['text'] ?? "Sorry, puriyala. Konjam vera maadhiri kelunga.";
+
+echo json_encode(["reply" => $reply]);
